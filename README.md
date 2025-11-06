@@ -1,4 +1,5 @@
 Proyecto Catálogo de Países
+
 CLI modular en Python para gestionar un catálogo jerárquico de países almacenado en CSV. Soporta alta, modificación, eliminación, lectura recursiva, filtrado, ordenamiento y estadísticas globales. Listo para commitear al repositorio.
 Estructura de archivos
 
