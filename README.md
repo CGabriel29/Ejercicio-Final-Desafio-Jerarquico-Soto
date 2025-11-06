@@ -114,3 +114,7 @@ Alta:
 - -->Permisos: asegúrate de tener permisos de escritura donde se crea data/.
 - -->CSV bloqueado por otra app: cierra editores que tengan abiertos los CSV.
 
+  # VIDEO
+
+  https://www.youtube.com/watch?v=mndvSDk663k
+
