@@ -19,14 +19,17 @@ Estructura de archivos
 - Python **3.10+** (uso de `match/case`)
 - Solo módulos estándar: `os`, `csv`, `collections`
 
-Instalación y ejecución
-1.Clona o copia los archivos al mismo directorio del proyecto.
-2.Abre una terminal en esa carpeta.
-3.Ejecuta:
+---
 
+Instalación y ejecución
+- Clona o copia los archivos al mismo directorio del proyecto.
+- Abre una terminal en esa carpeta.
+- Ejecuta:
+
+ ---
 ```bash
 python main.py
- -- El programa creará la carpeta data/ automáticamente si no existe.
+ - El programa creará la carpeta data/ automáticamente si no existe.
 
 - Menú y funcionalidades
 
@@ -41,24 +44,24 @@ python main.py
 7 - Filtrar ítems  
 8 - Salir
 
+```
 
+# Comportamiento clave:
 
-Comportamiento clave:
+- -->Alta: obliga a completar Continente, Región, Tipo de gobierno, Nombre (no vacíos), Población y Superficie (enteros > 0).
 
--->Alta: obliga a completar Continente, Región, Tipo de gobierno, Nombre (no vacíos), Población y Superficie (enteros > 0).
+- -->Modificar / Eliminar: identificación por nombre exacto (case-insensitive). Al modificar se sobrescribe únicamente el CSV que contiene el ítem.
 
--->Modificar / Eliminar: identificación por nombre exacto (case-insensitive). Al modificar se sobrescribe únicamente el CSV que contiene el ítem.
+- -->Lectura global: función recursiva que consolida todos los CSV en memoria como lista de diccionarios.
 
--->Lectura global: función recursiva que consolida todos los CSV en memoria como lista de diccionarios.
+- -->Formato de salida legible: "Nombre | Población: X | Superficie: Y".
 
--->Formato de salida legible: "Nombre | Población: X | Superficie: Y".
+- -->Ordenamiento: disponible por nombre, poblacion, superficie.
 
--->Ordenamiento: disponible por nombre, poblacion, superficie.
+- -->Filtrado: búsqueda exacta case-insensitive por cualquiera de esas claves.
 
--->Filtrado: búsqueda exacta case-insensitive por cualquiera de esas claves.
-
--->Estadísticas: cantidad total, suma y promedio de población, país con mayor/menor población, recuento por continente (primer nivel extraído desde la jerarquía de carpetas).
-
+- -->Estadísticas: cantidad total, suma y promedio de población, país con mayor/menor población, recuento por continente (primer nivel extraído desde la jerarquía de carpetas).
+```
 Estructura en disco (ejemplo):
 data/ 
 ├─ América/ 
@@ -68,45 +71,46 @@ data/
 │ └─ Norte/ 
 └─ Europa/ 
 └─ ...
+```
 
-Cada catalogo.csv tiene encabezado: nombre,poblacion,superficie
-Robustez y consideraciones
--->I/O protegido con try/except en persistence.py y funciones relacionadas.
+# Cada catalogo.csv tiene encabezado: nombre,poblacion,superficie
+# Robustez y consideraciones
+- I/O protegido con try/except en persistence.py y funciones relacionadas.
 
--->Al modificar o eliminar, solo se reescribe el CSV hoja correspondiente (modo "w").
+- Al modificar o eliminar, solo se reescribe el CSV hoja correspondiente (modo "w").
 
--->Filas con datos numéricos inválidos son notificadas y saltadas para evitar corrupción.
+- Filas con datos numéricos inválidos son notificadas y saltadas para evitar corrupción.
 
--->Si querés soporte para Python <3.10, reemplaza match/case por if/elif en main.py..
+- Si querés soporte para Python <3.10, reemplaza match/case por if/elif en main.py..
 
-Personalización rápida
--->Cambiar ruta de datos: editar BASE_DIR en config.py.
+# Personalización rápida
+- Cambiar ruta de datos: editar BASE_DIR en config.py.
 
--->Añadir campos: actualizar ENCABEZADO en config.py y adaptar persistence/crud/utils.
+- Añadir campos: actualizar ENCABEZADO en config.py y adaptar persistence/crud/utils.
 
--->Convertir a paquete: mover a subcarpeta, agregar __init__.py y usar imports relativos.
+- Convertir a paquete: mover a subcarpeta, agregar __init__.py y usar imports relativos.
 
-Ejemplo de flujo rápido
+# Ejemplo de flujo rápido
 Alta:
--->Continente: América
--->Región: Sur
--->Tipo de gobierno: Democracia
--->Nombre del país: Argentina
--->Población: 45000000
--->Superficie: 2780400
--->Mostrar todos: Argentina | Población: 45000000 | Superficie: 2780400
+- -->Continente: América
+- -->Región: Sur
+- -->Tipo de gobierno: Democracia
+- -->Nombre del país: Argentina
+- -->Población: 45000000
+- -->Superficie: 2780400
+- -->Mostrar todos: Argentina | Población: 45000000 | Superficie: 2780400
 
-Estadísticas:
--->Cantidad total de ítems: 1
--->Suma total de población: 45000000
--->Promedio de población: 45000000.00
--->País con mayor población: Argentina (45000000)
--->País con menor población: Argentina (45000000)
--->Recuento por continente: América: 1
+# Estadísticas:
+- -->Cantidad total de ítems: 1
+- -->Suma total de población: 45000000
+- -->Promedio de población: 45000000.00
+- -->País con mayor población: Argentina (45000000)
+- -->País con menor población: Argentina (45000000)
+- -->Recuento por continente: América: 1
 
 
-Troubleshooting rápido
--->ModuleNotFoundError: ejecuta python main.py desde la carpeta que contiene los .py.
--->Permisos: asegúrate de tener permisos de escritura donde se crea data/.
--->CSV bloqueado por otra app: cierra editores que tengan abiertos los CSV.
+# Troubleshooting rápido
+- -->ModuleNotFoundError: ejecuta python main.py desde la carpeta que contiene los .py.
+- -->Permisos: asegúrate de tener permisos de escritura donde se crea data/.
+- -->CSV bloqueado por otra app: cierra editores que tengan abiertos los CSV.
 
